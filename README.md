@@ -21,3 +21,13 @@ Miscellaneous utilities in AI
   - “Edit_file”
 - Create a new file, edit a new file
 
+2. Adding a KVCache to LLM Inference to improce latency
+   <img width="3322" height="1320" alt="image" src="https://github.com/user-attachments/assets/de616065-c379-42bc-8c32-586c00fa8583" />
+   
+#  Steps
+1. First Generation: When the model sees the first input, it calculates and stores its keys and values in the cache
+2. Next Words: For each new word, the model retrieves the stored keys and values and adds the new ones instead of starting over.
+3. Efficient Attention Computation: calculate attention using the cached K and V along with the new Q (query) to compute the output.
+4. Update Input: add the newly generated token to the input and go back to step 2 until we finish generating
+
+
